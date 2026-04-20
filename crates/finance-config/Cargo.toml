@@ -1,0 +1,14 @@
+[package]
+name = "finance-config"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+config.workspace = true
+serde.workspace = true
+local-ip-addr.workspace = true
+redis.workspace = true
+tokio.workspace = true
+sea-orm.workspace = true
