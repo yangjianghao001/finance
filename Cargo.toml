@@ -1,0 +1,58 @@
+[workspace]
+members = [
+    "crates/finance-api",
+    "crates/finance-common",
+    "crates/finance-config",
+    "crates/finance-entity",
+    "crates/finance-macro",
+    "crates/finance-service"
+]
+
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+
+[workspace.dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
+anyhow = "1.0.100"
+thiserror = "2.0.17"
+axum = { version = "0.8.8", features = ["macros"] }
+config = { version = "0.15.19", features = ["yaml"] }
+sea-orm = { version = "1.1.19", features = ["with-chrono", "debug-print", "sqlx-mysql", "with-rust_decimal", "runtime-tokio"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.148"
+tower-http = { version = "0.6.8", features = ["full"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["env-filter", "chrono"] }
+tracing-appender = "0.2.4"
+local-ip-addr = "0.1.1"
+proc-macro2 = "1.0.105"
+quote = "1.0.43"
+syn = { version = "2.0.114", features = ["full"] }
+rayon = "1.11.0"
+redis = { version = "1.0.2", features = ["tokio-comp", "connection-manager"] }
+uuid = { version = "1.20.0", features = ["v4"] }
+finance-config = { path = "crates/finance-config" }
+finance-entity = { path = "crates/finance-entity" }
+finance-service = { path = "crates/finance-service" }
+finance-api = { path = "crates/finance-api" }
+finance-common = { path = "crates/finance-common" }
+finance-macro = { path = "crates/finance-macro" }
+
+
+[dependencies]
+finance-api.workspace = true
+
+
+
+[package]
+name = "finance"
+version.workspace = true
+edition.workspace = true
+
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
